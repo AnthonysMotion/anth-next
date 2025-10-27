@@ -4,6 +4,7 @@ import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Fragment_Mono } from 'next/font/google';
 
+import { ViewTransitions } from 'next-view-transitions';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${fragmentMono.variable} antialiased`}
       >
-        {children}
+        <ViewTransitions>{children}</ViewTransitions>
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
@@ -13,6 +13,7 @@ const SectionOne = () => {
     const textContent =
         "A New Zealand-based designer and full-stack developer, crafting sleek digital experiences for the world's biggest and most ambitious brands.";
 
+    // Auckland time
     useEffect(() => {
         const updateTime = () => {
             const now = new Date();
@@ -32,6 +33,7 @@ const SectionOne = () => {
         return () => clearInterval(interval);
     }, []);
 
+    // GSAP word animation
     useEffect(() => {
         if (textRef.current) {
             const words = textRef.current.textContent?.split(" ") || [];
@@ -55,25 +57,26 @@ const SectionOne = () => {
     }, []);
 
     return (
-        <section className="w-full h-[70vh] flex border-b border-gray-300 pt-20 bg-white">
-            {/* Left Half */}
-            <div className="w-2/5 bg-white relative">
-                <div className="absolute top-4 left-4 text-sm text-black font-mono px-6 md:px-4">
-                    ■ Auckland {aucklandTime} (GMT +13)
-                </div>
-            </div>
+<section className="w-full min-h-[70vh] flex flex-col md:flex-row border-b border-gray-300 bg-white pt-20 overflow-hidden">
+  {/* Left Half */}
+  <div className="w-full md:w-2/5 bg-white relative flex-shrink-0 h-40 md:h-auto">
+    <div className="absolute top-4 left-4 text-sm text-black font-mono px-4 md:px-6">
+      ■ AUCKLAND {aucklandTime} (GMT +13)
+    </div>
+  </div>
 
-            {/* Right Half */}
-            <div className="bg-white w-3/5 flex flex-col  px-6 md:px-8 py-4">
-                {/* Text */}
-                <p
-                    ref={textRef}
-                    className="text-black text-4xl md:text-6xl"
-                >
-                    {textContent}
-                </p>
-            </div>
-        </section>
+  {/* Right Half */}
+  <div className="bg-white w-full md:w-3/5 flex flex-col px-4 md:px-8 py-6 md:py-4 justify-start">
+    <p
+      ref={textRef}
+      className="text-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-snug md:leading-tight break-words max-w-full"
+      style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}
+    >
+      {textContent}
+    </p>
+  </div>
+</section>
+
     );
 };
 
