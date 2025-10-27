@@ -10,7 +10,7 @@ export default function Footer() {
   const socialLinks = [
     { name: 'X', href: 'https://twitter.com/anthonysmotion' },
     { name: 'LINKEDIN', href: 'https://www.linkedin.com/in/anthonythach/' },
-    { name: 'INSTAGRAM', href: 'https://instagram.com/anthonysmotion' },
+    { name: 'INSTAGRAM', href: 'https://instagram.com/anthsvision' },
   ];
 
   return (
