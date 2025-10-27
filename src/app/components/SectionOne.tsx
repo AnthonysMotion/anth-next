@@ -8,7 +8,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const SectionOne = () => {
     const [aucklandTime, setAucklandTime] = useState("");
-    const textRef = useRef<HTMLDivElement>(null);
+    const sectionRef = useRef<HTMLDivElement | null>(null);
+    const textRef = useRef<HTMLDivElement | null>(null);
 
     const textContent =
         "A New Zealand-based designer and full-stack developer, crafting sleek digital experiences for the world's biggest and most ambitious brands.";
@@ -33,14 +34,18 @@ const SectionOne = () => {
         return () => clearInterval(interval);
     }, []);
 
-    // GSAP word animation
+    // GSAP word animation like SectionTwo
     useEffect(() => {
-        if (textRef.current) {
-            const words = textRef.current.textContent?.split(" ") || [];
-            textRef.current.innerHTML = words
-                .map((word) => `<span class="word inline-block mr-2">${word}</span>`)
-                .join("");
+        if (!sectionRef.current || !textRef.current) return;
 
+        const ctx = gsap.context(() => {
+            // Split text into words and wrap in spans
+            const words = textRef.current!.textContent?.split(" ") || [];
+            textRef.current!.innerHTML = words
+                .map((word) => `<span class="word inline-block mr-2">${word}</span>`)
+                .join(" ");
+
+            // Animate each word
             gsap.from(".word", {
                 y: 50,
                 opacity: 0,
@@ -48,35 +53,38 @@ const SectionOne = () => {
                 duration: 0.7,
                 ease: "power3.out",
                 scrollTrigger: {
-                    trigger: textRef.current,
+                    trigger: sectionRef.current,
                     start: "top 80%",
                     end: "top 40%",
                 },
             });
-        }
+        }, sectionRef);
+
+        return () => ctx.revert();
     }, []);
 
     return (
-<section className="w-full min-h-[70vh] flex flex-col md:flex-row border-b border-gray-300 bg-white pt-20 overflow-hidden">
-  {/* Left Half */}
-  <div className="w-full md:w-2/5 bg-white relative flex-shrink-0 h-40 md:h-auto">
-    <div className="absolute top-4 left-4 text-sm text-black font-mono px-4 md:px-6">
-      ■ AUCKLAND {aucklandTime} (GMT +13)
-    </div>
-  </div>
+        <section
+            ref={sectionRef}
+            className="w-full min-h-[70vh] flex flex-col md:flex-row border-b border-gray-300 bg-white pt-20 overflow-hidden"
+        >
+            {/* Left Half */}
+            <div className="w-full md:w-2/5 bg-white relative flex-shrink-0 h-40 md:h-auto">
+                <div className="absolute top-4 left-4 text-sm text-black font-mono px-4 md:px-6">
+                    ■ AUCKLAND {aucklandTime} (GMT +13)
+                </div>
+            </div>
 
-  {/* Right Half */}
-  <div className="bg-white w-full md:w-3/5 flex flex-col px-4 md:px-8 py-6 md:py-4 justify-start">
-    <p
-      ref={textRef}
-      className="text-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-snug md:leading-tight break-words max-w-full"
-      style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}
-    >
-      {textContent}
-    </p>
-  </div>
-</section>
-
+            {/* Right Half */}
+            <div className="bg-white w-full md:w-3/5 flex flex-col px-4 md:px-8 py-6 md:py-4 justify-start">
+                <p
+                    ref={textRef}
+                    className="text-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight break-words max-w-full"
+                >
+                    {textContent}
+                </p>
+            </div>
+        </section>
     );
 };
 
