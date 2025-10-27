@@ -70,38 +70,9 @@ body {
   animation: slideDown 0.3s ease forwards;
 }
 
-/* global.css */
-
-/* Old page scales down */
-::view-transition-old(root) {
-  transform: scale(1);
-  animation: scale-out 0.4s ease forwards;
-}
-
-/* New page scales up */
-::view-transition-new(root) {
-  transform: scale(0.95);
-  animation: scale-in 0.4s ease forwards;
-}
-
-@keyframes scale-out {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-}
-
-@keyframes scale-in {
-  0% {
-    opacity: 0;
-    transform: scale(1.05);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* Global text selection styling */
+html ::selection,
+body ::selection {
+  background-color: black; /* highlight background */
+  color: white;            /* text color while highlighted */
 }
