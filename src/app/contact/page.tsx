@@ -1,62 +1,57 @@
-// app/about/page.tsx
 'use client';
 
 import Nav from '@/app/components/nav';
 import Footer from '@/app/components/Footer';
 
-export default function AboutPage() {
+export default function Contact() {
   return (
-    <div className="w-full bg-white text-black">
+    <div className="w-full bg-white text-black min-h-screen">
       <Nav />
 
-      {/* First section: About / Photos */}
-      <section className="min-h-screen flex flex-col md:flex-row px-8 py-16 relative">
-{/* Left side: Photo above text */}
-<div className="md:w-1/2 flex flex-col justify-end">
-  {/* Photo */}
-  <div className="max-w-90 overflow-hidden mb-10">
-    <img
-      src="/img/img-2.png"
-      alt="Anthony Thach"
-      className="w-full h-full object-cover"
-    />
-  </div>
+      {/* Hero / Contact Intro */}
+      <section className="min-h-screen flex flex-col md:flex-row px-8 py-24 md:py-32">
+        {/* Left side: Contact text */}
+        <div className="md:w-1/2 flex flex-col justify-end md:justify-center">
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
+            Get in touch.
+          </h1>
+          <p className="text-black/80 text-lg md:text-xl mb-8">
+            Whether you have a project, collaboration, or just want to say hello, 
+            feel free to drop a message below. I’ll get back to you as soon as possible.
+          </p>
 
-  {/* Text at bottom */}
-  <p className="text-3xl text-black/80">
-    A New Zealand-based designer and full-stack developer, crafting sleek digital experiences for the world's biggest and most ambitious brands. 
-    Past clients include: Lenovo ANZ, ESL FACEIT Group, Team PWR, Nova Esports, One NZ Warriors, ACI.Dev and more.
-  </p>
-</div>
-
-
-
-      </section>
-
-      {/* Second section: Experience & Services */}
-      <section className="flex flex-col md:flex-row px-8 py-16 border-t border-gray-200">
-        {/* Left: Experience */}
-        <div className="md:w-1/2">
-          <h2 className="text-xs font-bold mb-6 tracking-tight">[ EXPERIENCE ]</h2>
-          <ul className="space-y-4 text-black/80 text-sm leading-tight">
-            <li>Software Development Internship @ ACI.Dev {`{NOW}`}</li>
-            <li>Motion Designer @ ESL FACEIT  Group {`{22 - 24}`}</li>
-            <li>Graphic Designer @ One NZ Warriors {`{22 - 23}`}</li>
-            <li>Creative Director @ Overt {`{19 - 21}`}</li>
-          </ul>
+          {/* Contact details */}
+          <div className="flex flex-col space-y-2 text-sm md:text-base">
+            <span>Email: hello@anthonythach.com</span>
+            <span>Phone: +64 21 123 4567</span>
+            <span>Location: Auckland, New Zealand</span>
+          </div>
         </div>
 
-        {/* Right: Services */}
-        <div className="md:w-1/2 pl-8 mt-8 md:mt-0">
-          <h2 className="text-xs font-bold mb-6 tracking-tight">[ SERVICES ]</h2>
-          <ul className="space-y-4 text-black/80 text-sm leading-tight">
-            <li>Graphic Design</li>
-            <li>Motion Design</li>
-            <li>Branding</li>
-            <li>UI/UX Design</li>
-            <li>Web Development</li>
-            <li>Photography</li>
-          </ul>
+        {/* Right side: Contact form */}
+        <div className="md:w-1/2 mt-12 md:mt-0 md:pl-12 flex flex-col justify-center">
+          <form className="flex flex-col space-y-6 w-full max-w-md">
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="border border-black/20 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-black/30 transition"
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="border border-black/20 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-black/30 transition"
+            />
+            <textarea
+              placeholder="Your Message"
+              className="border border-black/20 px-4 py-3 rounded-md h-40 resize-none focus:outline-none focus:ring-2 focus:ring-black/30 transition"
+            />
+            <button
+              type="submit"
+              className="bg-black text-white px-6 py-3 w-max rounded-md hover:bg-black/80 transition"
+            >
+              Send Message
+            </button>
+          </form>
         </div>
       </section>
 
