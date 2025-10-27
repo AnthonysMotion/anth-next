@@ -8,9 +8,9 @@ export default function Footer() {
   const [hovered, setHovered] = useState<string | null>(null);
 
   const socialLinks = [
-    { name: 'Twitter', href: 'https://twitter.com/anthonysmotion' },
-    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/anthonythach/' },
-    { name: 'Instagram', href: 'https://instagram.com/anthonysmotion' },
+    { name: 'X', href: 'https://twitter.com/anthonysmotion' },
+    { name: 'LINKEDIN', href: 'https://www.linkedin.com/in/anthonythach/' },
+    { name: 'INSTAGRAM', href: 'https://instagram.com/anthonysmotion' },
   ];
 
   return (
